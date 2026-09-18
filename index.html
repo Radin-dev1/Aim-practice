@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VectorRange — Aim Practice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">◈</span><span>VECTOR<span class="accent">RANGE</span></span></div>
+      <div class="session-pill"><span class="live-dot"></span><span id="sessionStatus">READY TO TRAIN</span></div>
+      <button class="sound-btn" id="soundToggle" aria-label="Toggle sound">◒ SOUND</button>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar">
+        <div class="eyebrow">TRAINING DECK</div>
+        <h1>Sharpen<br><em>the edge.</em></h1>
+        <p class="intro">Fast, focused drills for cleaner flicks, steadier tracking, and better first-shot accuracy.</p>
+        <div class="mode-list" id="modeList">
+          <button class="mode active" data-mode="flick"><span class="mode-icon">✦</span><span><b>Flick Lab</b><small>Snap to targets</small></span><span class="mode-arrow">→</span></button>
+          <button class="mode" data-mode="track"><span class="mode-icon">◎</span><span><b>Track Run</b><small>Keep your crosshair locked</small></span><span class="mode-arrow">→</span></button>
+          <button class="mode" data-mode="precision"><span class="mode-icon">⊙</span><span><b>Precision</b><small>Small targets, zero waste</small></span><span class="mode-arrow">→</span></button>
+        </div>
+        <div class="tip-card"><span class="tip-label">COACH NOTE</span><p id="coachTip">Relax your grip. Let the mouse glide, then click with intent.</p></div>
+        <div class="sidebar-footer"><span>BUILD 0.1 · BETA</span><span class="key-hint">ESC <small>pause</small></span></div>
+      </aside>
+
+      <section class="range-panel">
+        <div class="range-head"><div><div class="eyebrow">LIVE RANGE / <span id="modeLabel">FLICK LAB</span></div><h2 id="drillTitle">Warm-up flicks</h2></div><div class="head-actions"><label class="duration">ROUND <select id="duration"><option value="30">30 SEC</option><option value="60">60 SEC</option><option value="90">90 SEC</option></select></label><button class="ghost-btn" id="resetBtn">↻ RESET</button></div></div>
+        <div class="stats-row"><div><span>TIME</span><strong id="timeStat">00:30</strong></div><div><span>SCORE</span><strong id="scoreStat">0000</strong></div><div><span>HITS</span><strong id="hitsStat">0</strong></div><div><span>ACCURACY</span><strong id="accuracyStat">—</strong></div><div class="best"><span>PERSONAL BEST</span><strong id="bestStat">0000</strong></div></div>
+        <div class="arena-wrap"><div class="arena" id="arena"><div class="grid-floor"></div><div class="reticle" id="reticle"><i></i><span></span></div><div class="arena-hint" id="arenaHint"><span>CLICK START</span><small>Targets appear in the range</small></div><div class="target" id="target" hidden><span class="target-core"></span><span class="target-ring"></span></div><div class="hit-flash" id="hitFlash"></div></div></div>
+        <div class="controls"><button class="start-btn" id="startBtn"><span id="startLabel">START ROUND</span><span class="start-key">SPACE</span></button><div class="control-note"><span class="mouse-icon">⌁</span><span>Move your crosshair<br><b>Click targets to score</b></span></div></div>
+      </section>
+    </main>
+    <div class="results" id="results" hidden><div class="results-card"><div class="eyebrow">ROUND COMPLETE</div><h2 id="resultTitle">Clean work.</h2><div class="result-grid"><div><span>SCORE</span><b id="resultScore">0000</b></div><div><span>ACCURACY</span><b id="resultAccuracy">0%</b></div><div><span>AVG. REACTION</span><b id="resultReaction">0 ms</b></div></div><button class="start-btn" id="againBtn">RUN IT BACK <span class="start-key">SPACE</span></button></div></div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
